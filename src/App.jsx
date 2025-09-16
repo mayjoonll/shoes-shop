@@ -6,6 +6,7 @@ import bg_png from "./assets/images/bg.png"
 import img_2 from "./assets/images/shoes2.jpg"
 import data from './data/data';
 import { useState } from 'react';
+import Product from './Product';
 
 function App() {
   // 상품정보를 갖는 product 스테이트를 만든다
@@ -27,24 +28,16 @@ function App() {
       {/* 상품진열 영역 끝 */}
        <Container>
       <Row>
-        <Col className='text-center'>
-          <img src="https://zzzmini.github.io/images/shoes1.jpg" 
-          width="80%"/>
-          <h4>상품명</h4>
-          <p>상품설명</p>
+        {
+          product.map((shoes,_)=>{
+            return(
+            <Col key={shoes.id} className='text-center'>
+          {/* product 컴포넌트 자리 */}
+          <Product shoes={shoes}/>
         </Col>
-        <Col className='text-center'>
-          <img src={img_2}
-          width="80%"/>
-          <h4>상품명</h4>
-          <p>상품설명</p>
-        </Col>
-        <Col className='text-center'>
-          <img src="/images/shoes3.jpg" 
-          width="80%"/>
-          <h4>상품명</h4>
-          <p>상품설명</p>
-        </Col>
+          )
+          })
+        }
       </Row>
     </Container>
     </>

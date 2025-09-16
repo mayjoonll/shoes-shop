@@ -1,11 +1,10 @@
 import './App.css'
+import AppNavBar from './AppNavBar';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <h1>shoes shop</h1>
+      <AppNavBar/>
     </>
   )
 }

@@ -1,0 +1,8 @@
+.main-bg{
+  height: 300px;
+  /* public 폴더에 있는 이미지는 절대참조 */
+  /* 루트는 public 폴더를 가리킴 */
+  background-image: url('/images/bg.jpg');
+  background-size: cover;
+  background-position: center;
+}

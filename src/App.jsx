@@ -29,7 +29,8 @@ function App() {
       {/* 스프링에서 사용하는 컨트롤러 클래스 */}
       <Routes>
         <Route path="/" element={<div>메인페이지</div>} />
-        <Route path="/detail" element={<Detail/>} />
+        {/* /detail/2 -> PathVariable 설정 법 */}
+        <Route path="/detail/:id" element={<Detail product={product}/>} />
         <Route path="/cart" element={<div>장바구니페이지</div>} />
         {/* 중첩라우팅 처리 */}
         <Route path="/about" element={<About/>}>

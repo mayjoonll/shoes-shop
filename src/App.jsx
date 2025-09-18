@@ -26,7 +26,7 @@ function App() {
       {/* Routing 정보를 한꺼번에 모아놓는 장소 */}
       {/* 스프링에서 사용하는 컨트롤러 클래스 */}
       <Routes>
-        <Route path="/" element={<Home product={product}/>} />
+        <Route path="/" element={<Home product={product} setProduct={setProduct}/>} />
         {/* /detail/2 -> PathVariable 설정 법 */}
         <Route path="/detail/:id" element={<Detail product={product}/>} />
         <Route path="/cart" element={<div>장바구니페이지</div>} />

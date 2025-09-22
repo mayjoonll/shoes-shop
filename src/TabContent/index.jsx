@@ -4,7 +4,7 @@ import SizeGuide from "../TabInfo/SizeGuide";
 import Shipping from "../TabInfo/Shipping";
 import Review from "../TabInfo/Review";
 
-function TabContent({tabState, id}){
+function TabContent({tabState, id, review}){
   // fade 값으로 css를 지정하도록 ...
   let [fade, setFade] = useState('')
 
@@ -21,7 +21,6 @@ function TabContent({tabState, id}){
     }, [tabState]
   )
 
-
   return(
     <div className={`ani_start ${fade}`}>
       {
@@ -29,7 +28,7 @@ function TabContent({tabState, id}){
           <DetailInfo id={id}/>,
           <SizeGuide />,
           <Shipping />,
-          <Review id={id} />,
+          <Review review={review}/>
         ][tabState]}
     </div>
   )

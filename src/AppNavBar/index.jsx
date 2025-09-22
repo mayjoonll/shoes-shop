@@ -19,8 +19,8 @@ function AppNavBar(){
   const {userName, productStock, productName, changeName, addProduct} 
           = userStore();
 
-  console.log(productName);
-  console.log(productStock);
+  // console.log(productName);
+  // console.log(productStock);
 
   const navigate = useNavigate();
 

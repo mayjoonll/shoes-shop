@@ -3,21 +3,54 @@ import { immer } from "zustand/middleware/immer";
 
 const cartStore = create(immer((set)=>(
   {
-    cartData: [
-      {id: 0, name: "White and Black", count: 2},
-      {id: 1, name: "Grey Nike", count: 1},
-    ],
+    // 카트 초기화
+    cartData: [],
 
+    plusCount: (id) => 
+      set((state)=>{
+        const idx = state.cartData.findIndex((x)=> x.id === id);
+        if(idx !== -1) state.cartData[idx].count ++
+      }),
+
+    minusCount: (id) => 
+      set((state)=>{
+        const idx = state.cartData.findIndex((x)=> x.id === id);
+        if((idx !== -1) && !(state.cartData[idx].count === 0)) 
+          state.cartData[idx].count -= 1
+      }),  
+
+    // {
+    // id : 0,
+    // title : "White and Black",
+    // content : "Born in France",
+    // price : 120000,
+    // count : 1
+    // }
     addItem: (item) =>
       set((state) => {
-        state.cartData.push(item)
+        // 기존에 카트에 담겨있는 상품인지 확인
+        const findItem = state.cartData.find(x => x.id === item.id)
+        // null, undifind, "" => if(finditem)
+        let insertItem = {}
+        if(! findItem){
+          // count : 1 로 주고  추가
+          insertItem = {
+            ... item,
+            count: 1
+          }
+          // state에 추가
+          state.cartData.push(insertItem)
+        } else {
+          // 기존에 있는 데이터 => count ++
+          findItem.count++
+        }
       }),
     // 데이터 추가
     // addItem: (item)=>set((state)=>({
     //   cartData: [...state.cartData, item]
     // })),
 
-    removeItem: (id) =>
+    removeItem: (id) => 
       set((state)=>{
         const idx = state.cartData.findIndex((x)=> x.id === id);
         if(idx !== -1) state.cartData.splice(idx, 1)
@@ -33,9 +66,9 @@ const cartStore = create(immer((set)=>(
         // 수정할 객체 먼저 찾기
         const item = state.cartData.find((x)=> x.id === id)
         if(item){
-          // name이 공백이 아닌 경우
-          if(updates.name !== ""){
-            item.name = updates.name
+          // title이 공백이 아닌 경우
+          if(updates.title !== ""){
+            item.title = updates.name
           }
 
           // 수량이 숫자로 오면 변경
@@ -43,7 +76,11 @@ const cartStore = create(immer((set)=>(
             item.count = updates.count
           }
         }
-      })
+      }),
+
+    // 전체 데이터 삭제하기
+    clearAll: () =>
+      set((state)=> {state.cartData = []})
 
     // id와 form 객체를 받아서 수정
     // updateItem: (id, updates) => set((state) => ({

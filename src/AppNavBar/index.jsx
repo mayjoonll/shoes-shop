@@ -33,6 +33,7 @@ function AppNavBar(){
             <Nav className="me-auto">
               <Nav.Link onClick={()=>{navigate('/')}}>Home</Nav.Link>
               <Nav.Link onClick={()=>{navigate('/cart')}}>Cart</Nav.Link>
+              <Nav.Link onClick={()=>{navigate('/recent')}}>Recent</Nav.Link>
               <Nav.Link onClick={()=>{navigate('/about')}}>About</Nav.Link>
               <NavDropdown title="Info" id="basic-nav-dropdown">
                 <NavDropdown.Item onClick={()=>{navigate('/about/member')}}>Member</NavDropdown.Item>

@@ -7,6 +7,7 @@ import Detail from "./Detail";
 import About from "./About";
 import Home from "./Home";
 import Cart from "./Cart";
+import Recent from "./Recent";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="member" element={<div>Member Page</div>}></Route>
           <Route path="location" element={<div>Location Page</div>}></Route>
         </Route>
+        <Route path="/recent" element={<Recent  product={product}/>} />
         <Route path="*" element={<div>Page Not Found 404 Error</div>}></Route>
       </Routes>
     </>
